@@ -142,11 +142,7 @@ typedef struct {
 } QueueType;
 
 void init(QueueType *q){
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            q->arr[i][j] = '\0';
-        }
-    }
+    for (int i = 0; i < SIZE; i++) for (int j = 0; j < SIZE; j++) q->arr[i][j] = '\0';
     q->front = q->rear = 0;
 }
 
@@ -175,7 +171,7 @@ element* dequeue(QueueType *q) {
     else {
         element name[SIZE];
         for (int i = 0;q->arr[(q->front+1)%SIZE][i] != '\0'; i++) {
-            name[i] = q->arr[(q->front+1)%SIZE][i];
+            q->arr[(q->rear+1)%SIZE][i] = q->arr[(q->front+1)%SIZE][i];
             q->arr[(q->front+1)%SIZE][i] = '\0';
         }
         q->front++;
@@ -183,10 +179,8 @@ element* dequeue(QueueType *q) {
     }
 }
 void print(QueueType *q) {
-    int i = (q->front + 1) % SIZE;
-    while (i != (q->rear + 1) % SIZE) {
+    for (int i = (q->front + 1) % SIZE; i != (q->rear + 1) % SIZE; i = (i + 1) % SIZE) {
         (q->arr[i] != NULL) ? printf("%s, ", q->arr[i]) : printf(", ");
-        i = (i + 1) % SIZE;
     }
     printf("\n");
 }
