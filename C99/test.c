@@ -132,7 +132,7 @@ int main(void) {
     } while(choice != 4);
     return 0;
 }
-*/
+
 #include <stdio.h>
 #define SIZE 10
 typedef char element;
@@ -203,5 +203,21 @@ int main(void) {
             break;
         }
     } while(choice < 4);
+    return 0;
+}
+*/
+#include <stdio.h>
+int main(void) {
+    int arr[30] = {
+        0x7E, 0x7D, 0x9A, 0x8B, 0x25, 0x2D, 0xD5, 0x3D, 
+        0x3, 0x2B, 0x38, 0x98, 0x27, 0x9F, 0x4F, 0xBC, 
+        0x2A, 0x79, 0x0, 0x7D, 0xC4, 0x2A, 0x4F, 0x58
+        };
+    char ch[256];
+    scanf("%s", ch);
+    unsigned __int8 v2 = ch;
+    for (int i = 0; i < 8; ++i) {
+        printf("%d ", !(i&i));
+    }
     return 0;
 }
